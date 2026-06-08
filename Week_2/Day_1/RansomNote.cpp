@@ -1,15 +1,17 @@
 class Solution {
 public:
-    int firstUniqChar(string s) {
-        int n = s.size();
+    bool canConstruct(string ransomNote, string magazine) {
         vector<int> freq(26,0);
-        for(char ch : s)
-          freq[ch - 'a']++ ;
-          
-        for(int i = 0;i < n; i++){
-            if(freq[s[i]-'a']==1)
-            return i;
+        for(char ch : magazine){
+            freq[ch - 'a']++;
         }
-        return -1;
+        for(char ch : ransomNote){
+            freq[ch - 'a']--;
+            if(freq[ch - 'a'] < 0)
+       { 
+        return false;
+       }
+  }
+       return true;
     }
 };
